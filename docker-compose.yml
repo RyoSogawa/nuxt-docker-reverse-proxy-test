@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./docker/nginx      # Dockerfile保存場所
+      dockerfile: Dockerfile       # Dockerfileファイル名
+    ports:
+      - 80:80
+
+  nuxt_app:
+    build:
+      context: ./docker/node           # Dockerfile保存場所
+      dockerfile: Dockerfile           # Dockerfileファイル名
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/projects
+    tty: true
